@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Res/antenna.png</file>
+        <file>Res/connect.png</file>
+    </qresource>
+</RCC>

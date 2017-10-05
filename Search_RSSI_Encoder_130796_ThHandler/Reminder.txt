@@ -1,0 +1,1 @@
+1. write for fixed MicroController to send data without working of Rotary MCU
