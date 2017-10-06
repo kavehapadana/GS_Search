@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Thu Oct 5 15:30:21 2017
+** Created: Fri Oct 6 21:17:52 2017
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      69,   14, // methods
+      66,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -58,50 +58,47 @@ static const uint qt_meta_data_MainWindow[] = {
      598,   11,   11,   11, 0x08,
      623,  616,   11,   11, 0x08,
      668,  658,   11,   11, 0x08,
-     739,  729,  722,   11, 0x08,
-     777,  765,  722,   11, 0x08,
-     815,  805,  722,   11, 0x08,
-     841,   11,   11,   11, 0x08,
-     881,  871,   11,   11, 0x08,
-     909,   11,   11,   11, 0x08,
-     934,   11,   11,   11, 0x08,
-     958,   11,   11,   11, 0x08,
-     978,   11,   11,   11, 0x08,
-     992,   11,   11,   11, 0x08,
-    1010,   11,   11,   11, 0x08,
-    1050, 1042,   11,   11, 0x08,
-    1075,   11,   11,   11, 0x08,
-    1090,   11,   11,   11, 0x08,
-    1102,   11,   11,   11, 0x08,
-    1117,   11,   11,   11, 0x08,
-    1138,   11,   11,   11, 0x08,
-    1170, 1168,   11,   11, 0x08,
-    1192,   11,   11,   11, 0x08,
-    1218,   11,   11,   11, 0x08,
-    1245,   11,   11,   11, 0x08,
+     722,   11,   11,   11, 0x08,
+     762,  752,   11,   11, 0x08,
+     790,   11,   11,   11, 0x08,
+     815,   11,   11,   11, 0x08,
+     839,   11,   11,   11, 0x08,
+     859,   11,   11,   11, 0x08,
+     873,   11,   11,   11, 0x08,
+     891,   11,   11,   11, 0x08,
+     931,  923,   11,   11, 0x08,
+     956,   11,   11,   11, 0x08,
+     971,   11,   11,   11, 0x08,
+     983,   11,   11,   11, 0x08,
+     998,   11,   11,   11, 0x08,
+    1019,   11,   11,   11, 0x08,
+    1051, 1049,   11,   11, 0x08,
+    1073,   11,   11,   11, 0x08,
+    1099,   11,   11,   11, 0x08,
+    1126,   11,   11,   11, 0x08,
+    1154,   11,   11,   11, 0x08,
+    1187, 1183,   11,   11, 0x08,
+    1206,   11,   11,   11, 0x08,
+    1237,  923,   11,   11, 0x08,
     1273,   11,   11,   11, 0x08,
-    1306, 1302,   11,   11, 0x08,
-    1325,   11,   11,   11, 0x08,
-    1356, 1042,   11,   11, 0x08,
-    1392,   11,   11,   11, 0x08,
-    1415, 1042,   11,   11, 0x08,
-    1446,   11,   11,   11, 0x08,
-    1462,   11,   11,   11, 0x08,
-    1476,   11,   11,   11, 0x08,
-    1500,   11,   11,   11, 0x08,
+    1296,  923,   11,   11, 0x08,
+    1327,   11,   11,   11, 0x08,
+    1343,   11,   11,   11, 0x08,
+    1357,   11,   11,   11, 0x08,
+    1381,   11,   11,   11, 0x08,
+    1404,   11,   11,   11, 0x08,
+    1430,   11,   11,   11, 0x08,
+    1455,   11,   11,   11, 0x08,
+    1489,   11,   11,   11, 0x08,
     1523,   11,   11,   11, 0x08,
-    1549,   11,   11,   11, 0x08,
-    1574,   11,   11,   11, 0x08,
-    1608,   11,   11,   11, 0x08,
-    1642,   11,   11,   11, 0x08,
-    1697, 1677, 1668,   11, 0x08,
-    1757, 1737,   11,   11, 0x08,
-    1793,   11,   11,   11, 0x08,
-    1817,   11,   11,   11, 0x08,
-    1848, 1842,   11,   11, 0x08,
-    1888, 1042,   11,   11, 0x08,
-    1919,   11,   11,   11, 0x08,
-    1954,   11,   11,   11, 0x0a,
+    1578, 1558, 1549,   11, 0x08,
+    1638, 1618,   11,   11, 0x08,
+    1674,   11,   11,   11, 0x08,
+    1698,   11,   11,   11, 0x08,
+    1729, 1723,   11,   11, 0x08,
+    1769,  923,   11,   11, 0x08,
+    1800,   11,   11,   11, 0x08,
+    1835,   11,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -129,9 +126,6 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "parseMessage(QByteArray,QDateTime)\0"
     "_grph,X,Y\0"
     "setMainGraphData(int,QVector<double>,QVector<double>)\0"
-    "double\0_rssi_sum\0RSSI_SUM_Analyzor(double)\0"
-    "_rssi_delta\0RSSI_Delta_Analyzor(double)\0"
-    "_rssi_slc\0RSSI_SLC_Analyzor(double)\0"
     "on_btnResetMaxTable_clicked()\0_row,_col\0"
     "table_CellSelected(int,int)\0"
     "on_btnOpenFile_clicked()\0"
@@ -201,54 +195,48 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 22: _t->SecondTimerTick(); break;
         case 23: _t->parseMessage((*reinterpret_cast< QByteArray(*)>(_a[1])),(*reinterpret_cast< QDateTime(*)>(_a[2]))); break;
         case 24: _t->setMainGraphData((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QVector<double>(*)>(_a[2])),(*reinterpret_cast< QVector<double>(*)>(_a[3]))); break;
-        case 25: { double _r = _t->RSSI_SUM_Analyzor((*reinterpret_cast< double(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = _r; }  break;
-        case 26: { double _r = _t->RSSI_Delta_Analyzor((*reinterpret_cast< double(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = _r; }  break;
-        case 27: { double _r = _t->RSSI_SLC_Analyzor((*reinterpret_cast< double(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = _r; }  break;
-        case 28: _t->on_btnResetMaxTable_clicked(); break;
-        case 29: _t->table_CellSelected((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 30: _t->on_btnOpenFile_clicked(); break;
-        case 31: _t->on_btnAnalyze_clicked(); break;
-        case 32: _t->writeMaxArratTo3D(); break;
-        case 33: _t->UpdateLists(); break;
-        case 34: _t->mainUpdateLists(); break;
-        case 35: _t->on_btnResetMaxTable_a_clicked(); break;
-        case 36: _t->on_chkAuto_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 37: _t->forwardStyle(); break;
-        case 38: _t->stopStyle(); break;
-        case 39: _t->reverseStyle(); break;
-        case 40: _t->on_btnTest_clicked(); break;
-        case 41: _t->on_btnClearDiagrams_clicked(); break;
-        case 42: _t->errorString((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 43: _t->on_btnForceExit_clicked(); break;
-        case 44: _t->on_btnSimplePLot_clicked(); break;
-        case 45: _t->on_btnSetAutoSpan_clicked(); break;
-        case 46: _t->on_btnMaxPlotAnaGO_clicked(); break;
-        case 47: _t->maxPlotGoBack((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 48: _t->on_btnMaxPlotAnaBack_clicked(); break;
-        case 49: _t->on_rb_adc_EncoderPlot_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 50: _t->on_btn_test2_clicked(); break;
-        case 51: _t->on_rb_LinearPlot_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 52: _t->ResetAllPlots(); break;
-        case 53: _t->rcvDataSlot(); break;
-        case 54: _t->on_btnHighSum_clicked(); break;
-        case 55: _t->on_btnLowSum_clicked(); break;
-        case 56: _t->on_btnHighDelta_clicked(); break;
-        case 57: _t->on_btnLowDelta_clicked(); break;
-        case 58: _t->on_btnloadtlefromfile_2_clicked(); break;
-        case 59: _t->on_btnConvertTLETOLLA_2_clicked(); break;
-        case 60: _t->on_btnpredict_3_clicked(); break;
-        case 61: { VectorXd _r = _t->CalcVectorXd((*reinterpret_cast< QDateTime(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])));
+        case 25: _t->on_btnResetMaxTable_clicked(); break;
+        case 26: _t->table_CellSelected((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 27: _t->on_btnOpenFile_clicked(); break;
+        case 28: _t->on_btnAnalyze_clicked(); break;
+        case 29: _t->writeMaxArratTo3D(); break;
+        case 30: _t->UpdateLists(); break;
+        case 31: _t->mainUpdateLists(); break;
+        case 32: _t->on_btnResetMaxTable_a_clicked(); break;
+        case 33: _t->on_chkAuto_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 34: _t->forwardStyle(); break;
+        case 35: _t->stopStyle(); break;
+        case 36: _t->reverseStyle(); break;
+        case 37: _t->on_btnTest_clicked(); break;
+        case 38: _t->on_btnClearDiagrams_clicked(); break;
+        case 39: _t->errorString((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 40: _t->on_btnForceExit_clicked(); break;
+        case 41: _t->on_btnSimplePLot_clicked(); break;
+        case 42: _t->on_btnSetAutoSpan_clicked(); break;
+        case 43: _t->on_btnMaxPlotAnaGO_clicked(); break;
+        case 44: _t->maxPlotGoBack((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 45: _t->on_btnMaxPlotAnaBack_clicked(); break;
+        case 46: _t->on_rb_adc_EncoderPlot_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 47: _t->on_btn_test2_clicked(); break;
+        case 48: _t->on_rb_LinearPlot_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 49: _t->ResetAllPlots(); break;
+        case 50: _t->rcvDataSlot(); break;
+        case 51: _t->on_btnHighSum_clicked(); break;
+        case 52: _t->on_btnLowSum_clicked(); break;
+        case 53: _t->on_btnHighDelta_clicked(); break;
+        case 54: _t->on_btnLowDelta_clicked(); break;
+        case 55: _t->on_btnloadtlefromfile_2_clicked(); break;
+        case 56: _t->on_btnConvertTLETOLLA_2_clicked(); break;
+        case 57: _t->on_btnpredict_3_clicked(); break;
+        case 58: { VectorXd _r = _t->CalcVectorXd((*reinterpret_cast< QDateTime(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< VectorXd*>(_a[0]) = _r; }  break;
-        case 62: _t->PerdictSat((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
-        case 63: _t->on_pushButton_clicked(); break;
-        case 64: _t->on_btnperedict_clicked(); break;
-        case 65: _t->on_comboBoxGPS_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 66: _t->on_rbSelectDelta_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 67: _t->on_btnsetFrequencyRotMCU_clicked(); break;
-        case 68: _t->handleResults((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 59: _t->PerdictSat((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
+        case 60: _t->on_pushButton_clicked(); break;
+        case 61: _t->on_btnperedict_clicked(); break;
+        case 62: _t->on_comboBoxGPS_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 63: _t->on_rbSelectDelta_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 64: _t->on_btnsetFrequencyRotMCU_clicked(); break;
+        case 65: _t->handleResults((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -286,9 +274,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 69)
+        if (_id < 66)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 69;
+        _id -= 66;
     }
     return _id;
 }

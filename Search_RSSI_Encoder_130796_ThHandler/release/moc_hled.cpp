@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'hled.h'
 **
-** Created: Thu Oct 5 11:30:27 2017
+** Created: Fri Oct 6 21:17:53 2017
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

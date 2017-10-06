@@ -16,6 +16,7 @@
 #include <iostream>
 #include <numeric>
 #include <vector>
+
 using namespace std;
 
 #define GlobalVariables
@@ -63,6 +64,8 @@ int ADC_Data_count = 0;
 bool moveToForward = true;
 #endif
 
+double FIR_NUM_test[10] = {.1,.1,.1,.1,.1,.1,.1,.1,.1,.1};
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -78,6 +81,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lePassWord->setEchoMode(QLineEdit::Password);
 
     myDate = new QDateTime();
+    _Analyzor = new Analyzor();
+
     ui->btnAnalyze->setEnabled(false);
     ui->btnSimplePLot->setEnabled(false);
     //ui->hlPlotPicks->setEnabled(false);
@@ -1436,12 +1441,12 @@ void MainWindow::on_rb_adc_EncoderPlot_toggled(bool checked)
 
     if(checked)
     {
-        ui->rb_PolarPlot->setEnabled(true);
+        ui->rdbPolarPlot->setEnabled(true);
     }
     else
     {
-        ui->rb_PolarPlot->setEnabled(false);
-        ui->rb_LinearPlot->setChecked(Qt::Checked);
+        ui->rdbPolarPlot->setEnabled(false);
+        ui->rdbLinearPlot->setChecked(Qt::Checked);
     }
 }
 
@@ -1584,7 +1589,7 @@ void MainWindow::parseMessage(QByteArray msg, QDateTime dt)
 
     }
 
-    uint _RSSI_SUM_Data        = MCU_Data_u.MCU_Data_S.RSSI_SUM_UARTs_Data[0] + MCU_Data_u.MCU_Data_S.RSSI_SUM_UARTs_Data[1]*256 + MCU_Data_u.MCU_Data_S.RSSI_SUM_UARTs_Data[2]*65536;
+    uint _RSSI_SUM_Data   = MCU_Data_u.MCU_Data_S.RSSI_SUM_UARTs_Data[0] + MCU_Data_u.MCU_Data_S.RSSI_SUM_UARTs_Data[1]*256 + MCU_Data_u.MCU_Data_S.RSSI_SUM_UARTs_Data[2]*65536;
     uint8_t _Dopp         = MCU_Data_u.MCU_Data_S.Dopp_UARTs_data;
     uint _RSSI_Delta_Data = MCU_Data_u.MCU_Data_S.RSSI_Delta_UARTs_Data[0] + MCU_Data_u.MCU_Data_S.RSSI_Delta_UARTs_Data[1]*256 + MCU_Data_u.MCU_Data_S.RSSI_Delta_UARTs_Data[2]*65536;
 
@@ -1756,7 +1761,6 @@ void MainWindow::parseMessage(QByteArray msg, QDateTime dt)
     else
         Doppler =((int)(( 127.0 - _Dopp)*765.625)); // 765.625 ~ 766Hz-FFT resolution
 
-    //QDateTime dt = myDate->currentDateTime();
     double timeSec = (dt.time().second())%30 + dt.time().msec()/1000.0;
 
     tmDoubleList.append(dt.time().second() + dt.time().msec()/1000.0);
@@ -1767,26 +1771,27 @@ void MainWindow::parseMessage(QByteArray msg, QDateTime dt)
     RSSI_SUM_List.append(_RSSI_SUM_Data);
     RSSI_Delta_List.append(_RSSI_Delta_Data);
 
-    double deltasumMeanDiff = 0;
     if(true)   // Analyzor
     {
-//        RSSI_SUM_Analyzor_List.append(_RSSI_SUM_Data);
-//        RSSI_Delta_Analyzor_List.append(_RSSI_Delta_Data);
-//        if(RSSI_SUM_Analyzor_List.size() > 50)
-//        {
-//            RSSI_SUM_Analyzor_List.remove(0);
-//            RSSI_Delta_Analyzor_List.remove(0);
-//        }
+        double SUM_Analyzor;
+        double Delta_Analyzor;
+        if(ui->rdbAnlzAve->isChecked())
+        {
+            SUM_Analyzor = _Analyzor->RSSI_SUM_Analyzor_Ave(_RSSI_SUM_Data);//     RSSI_SSI_SUM_Analyzor_FIR(_RSSI_SUM_Data,0);
+            Delta_Analyzor= _Analyzor->RSSI_Delta_Analyzor_Ave(_RSSI_Delta_Data);//      RSSI_SUM_Analyzor_Ave(_RSSI_SUM_Data,0);
+        }
+        else
+        {
+            SUM_Analyzor = _Analyzor->RSSI_SUM_Analyzor_FIR(_RSSI_SUM_Data);//     RSSI_SSI_SUM_Analyzor_FIR(_RSSI_SUM_Data,0);
+            Delta_Analyzor= _Analyzor->RSSI_Delta_Analyzor_FIR(_RSSI_Delta_Data);//      RSSI_SUM_Analyzor_Ave(_RSSI_SUM_Data,0);
+        }
 
-//        double SUM_Analyzor_Mean = std::accumulate(RSSI_SUM_Analyzor_List.begin(),RSSI_SUM_Analyzor_List.end(),.0)/RSSI_SUM_Analyzor_List.size();
-//        double Delta_Analyzor_Mean =  std::accumulate(RSSI_Delta_Analyzor_List.begin(),RSSI_Delta_Analyzor_List.end(),.0)/RSSI_Delta_Analyzor_List.size();
-//        SUM_Analyzor_Mean = SUM_Analyzor_Mean*CoefAnlyzorSum + OffsetAnalyzerSum;
-//        Delta_Analyzor_Mean = Delta_Analyzor_Mean*CoefAnlyzorDelta + OffsetAnalyzerDelta;
-        double SUM_Analyzor_Mean = RSSI_SUM_Analyzor(_RSSI_SUM_Data);
-        double Delta_Analyzor_Mean = RSSI_Delta_Analyzor(_RSSI_Delta_Data);
-        RSSI_SUM_Analyzor_Mean_List.append(SUM_Analyzor_Mean);
-        RSSI_Delta_Analyzor_Mean_List.append(Delta_Analyzor_Mean);
-        deltasumMeanDiff = SUM_Analyzor_Mean - Delta_Analyzor_Mean;
+
+        SUM_Analyzor = SUM_Analyzor * CoefAnlyzorDelta + OffsetAnalyzerDelta;
+        RSSI_SUM_Analyzor_Mean_List.append(SUM_Analyzor);
+
+        Delta_Analyzor = Delta_Analyzor * CoefAnlyzorDelta + OffsetAnalyzerDelta;
+        RSSI_Delta_Analyzor_Mean_List.append(Delta_Analyzor);
 
         if(RSSI_SUM_Analyzor_Mean_List.size() > packetSize)
         {
@@ -1796,7 +1801,6 @@ void MainWindow::parseMessage(QByteArray msg, QDateTime dt)
     }
     timeList.append(timeSec);
     DopplerList.append(Doppler);
-    //DopplerList.append(deltasumMeanDiff);
     FinalDegList.append(finalDeg);
     finalDegPlotList.append(finalDeg_forPlot);
     FinalRevList.append(finalRev);
@@ -1871,9 +1875,9 @@ void MainWindow::parseMessage(QByteArray msg, QDateTime dt)
             ui->plot_RSSI_SUM_Delta->graph(2)->clearData();
             ui->plot_RSSI_SUM_Delta->graph(3)->clearData();
 
-            int plotState = (ui->rb_LinearPlot->isChecked() && ui->rb_adc_EncoderPlot->isChecked())*1 + // plotting based Degree in linear
-                       (ui->rb_LinearPlot->isChecked() && ui->rb_RealTime->isChecked())*3 + // plotting besed time in linear
-                       (ui->rb_PolarPlot->isChecked() && ui->rb_adc_EncoderPlot->isChecked())*7; // plotting based encoder in Polar
+            int plotState = (ui->rdbLinearPlot->isChecked() && ui->rdbEncoderPlot->isChecked())*1 + // plotting based Degree in linear
+                       (ui->rdbLinearPlot->isChecked() && ui->rdbRealTime->isChecked())*3 + // plotting besed time in linear
+                       (ui->rdbPolarPlot->isChecked() && ui->rdbEncoderPlot->isChecked())*7; // plotting based encoder in Polar
             plotState*=((int)(ui->chkAuto->isChecked())+1); // Change the plot for Snap
             switch(plotState)
             {
@@ -2166,49 +2170,12 @@ void MainWindow::setMainGraphData(int _grph, QVector<double> X,QVector<double> Y
 
 }
 
-QVector<double>     RSSI_SUM_Analyzor_List;
-double MainWindow::RSSI_SUM_Analyzor(double _rssi_sum)
-{
-    RSSI_SUM_Analyzor_List.append(_rssi_sum);
-    if(RSSI_SUM_Analyzor_List.size() > 50)
-    {
-        RSSI_SUM_Analyzor_List.remove(0);
-    }
-
-    double SUM_Analyzor_Mean = std::accumulate(RSSI_SUM_Analyzor_List.begin(),RSSI_SUM_Analyzor_List.end(),.0)/RSSI_SUM_Analyzor_List.size();
-    SUM_Analyzor_Mean = SUM_Analyzor_Mean*CoefAnlyzorSum + OffsetAnalyzerSum;
-
-    return SUM_Analyzor_Mean;
-}
-
-QVector<double>     RSSI_Delta_Analyzor_List;
-double MainWindow::RSSI_Delta_Analyzor(double _rssi_delta)
-{
-    RSSI_Delta_Analyzor_List.append(_rssi_delta);
-    if(RSSI_Delta_Analyzor_List.size() > 50)
-    {
-        RSSI_Delta_Analyzor_List.remove(0);
-    }
-
-    double Delta_Analyzor_Mean =  std::accumulate(RSSI_Delta_Analyzor_List.begin(),RSSI_Delta_Analyzor_List.end(),.0)/RSSI_Delta_Analyzor_List.size();
-    Delta_Analyzor_Mean = Delta_Analyzor_Mean*CoefAnlyzorDelta + OffsetAnalyzerDelta;
-
-    return Delta_Analyzor_Mean;
-}
-
-double MainWindow::RSSI_SLC_Analyzor(double _rssi_slc)
-{
-
-    return 0;
-}
-
 void MainWindow::on_btnHighSum_clicked()
 {
     QByteArray Message;
     Message[0] = RotMCU_HighSUM;
     TransmitMessage(Message,RotMCU_ID);
 }
-
 void MainWindow::on_btnLowSum_clicked()
 {
     QByteArray Message;
@@ -2335,7 +2302,6 @@ void MainWindow::on_btnConvertTLETOLLA_2_clicked()
     ui->txtaltitudetle_2->clear();
     ui->txtaltitudetle_2->setText(QString::number(LLA_TLE(2),'g',8));
 }
-
 int FrisingAzimuth=0,FrisingElevation=-10,FrisingType=0;
 QDateTime FrisingTime;
 void MainWindow::on_btnpredict_3_clicked()
@@ -2667,7 +2633,6 @@ void MainWindow::on_btnpredict_3_clicked()
     //_monitorForm->setSatellitePosition(Path);
     //_monitorForm->startAnimation();
 }
-
 VectorXd MainWindow::CalcVectorXd(QDateTime current,QString Line1,QString line2)
 {
     Tleconversion TLE;
@@ -2716,7 +2681,6 @@ VectorXd MainWindow::CalcVectorXd(QDateTime current,QString Line1,QString line2)
     VectorXd Angle_dplr=TLE.tle2angle(longstr1,longstr2,Jd_now,Lambda,LLA_GS,false);
     return Angle_dplr;
 }
-
 void MainWindow::on_pushButton_clicked()
 {
     CoefAnlyzorSum = ui->leCoefAnlyzorSum->text().toDouble();
@@ -2724,7 +2688,6 @@ void MainWindow::on_pushButton_clicked()
     CoefAnlyzorDelta = ui->leCoefAnlyzorDelta->text().toDouble();
     OffsetAnalyzerDelta = ui->leOffsetAnalyzerDelta->text().toDouble();
 }
-
 void MainWindow::on_btnperedict_clicked()
 {
     countoftle = 0;
@@ -2910,7 +2873,6 @@ void MainWindow::PerdictSat(QString line1, QString line2, QString satname)
 
 
 }
-
 void MainWindow::on_comboBoxGPS_currentIndexChanged(int index)
 {
     QString arg1=ui->comboBoxGPS->currentText();
@@ -2943,23 +2905,21 @@ void MainWindow::on_comboBoxGPS_currentIndexChanged(int index)
     }
 
 }
-
 void MainWindow::on_rbSelectDelta_toggled(bool checked)
 {
-    if(ui->rbSelectDelta->isChecked())
+    if(ui->rdbSelectDelta->isChecked())
     {
         QByteArray Message;
         Message[0] = RotMCU_SelectDelta;
         TransmitMessage(Message,RotMCU_ID);
     }
-    else if(ui->rbSelectSLC->isChecked())
+    else if(ui->rdbSelectSLC->isChecked())
     {
         QByteArray Message;
         Message[0] = RotMCU_SelectSLC;
         TransmitMessage(Message,RotMCU_ID);
     }
 }
-
 void pack24(uint32_t val, uint8_t *dost)
 {
     dost[0] = (val & 0x0000ff) >> 0;
@@ -2978,11 +2938,14 @@ void MainWindow::on_btnsetFrequencyRotMCU_clicked()
         Message[0] = (freqInt & 0x0000ff) >> 0;
         Message[1] = (freqInt & 0x00ff00) >> 8;
         Message[2] = (freqInt & 0xff0000) >> 16;
-//==============================================//
+
         Message[3] = (freqFract & 0x0000ff) >> 0;
         Message[4] = (freqFract & 0x00ff00) >> 8;
         Message[5] = (freqFract & 0xff0000) >> 16;
 
+        Message[6] = 0;
+        Message[7] = 0; //Reseved for future uses
+        Message[8] = 0;
 
         QByteArray  tranMSG;
         tranMSG.append(msgTrans_Sync1);

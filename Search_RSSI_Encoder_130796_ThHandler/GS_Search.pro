@@ -40,7 +40,8 @@ SOURCES += src/qcustomplot.cpp \
     Rotator/matrix_algebra.cpp \
     Rotator/SGP4/sgp4unit.cpp \
     Rotator/SGP4/sgp4io.cpp \
-    Rotator/SGP4/sgp4ext.cpp
+    Rotator/SGP4/sgp4ext.cpp \
+    src/analyzor.cpp
 
 HEADERS  += inc/qcustomplot.h \
     inc/mainwindow.h \
@@ -55,7 +56,8 @@ HEADERS  += inc/qcustomplot.h \
     Rotator/transformmatrix.h \
     Rotator/SGP4/sgp4unit.h \
     Rotator/SGP4/sgp4io.h \
-    Rotator/SGP4/sgp4ext.h
+    Rotator/SGP4/sgp4ext.h \
+    analyzor.h
 
 
 FORMS    += mainwindow.ui

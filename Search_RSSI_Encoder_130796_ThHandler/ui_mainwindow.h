@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu Oct 5 15:29:44 2017
+** Created: Fri Oct 6 21:30:53 2017
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -103,23 +103,26 @@ public:
     QLabel *lbl_MovingFlage;
     QLabel *lbl_finalDegreefinal;
     QGroupBox *gb_SerialPlotRadios;
-    QRadioButton *rb_RealTime;
-    QRadioButton *rb_adc_EncoderPlot;
+    QRadioButton *rdbRealTime;
+    QRadioButton *rdbEncoderPlot;
     QGroupBox *gb_SerialPlotRadios_plarLinear;
-    QRadioButton *rb_PolarPlot;
-    QRadioButton *rb_LinearPlot;
+    QRadioButton *rdbPolarPlot;
+    QRadioButton *rdbLinearPlot;
     QGroupBox *groupBox_2;
     QCheckBox *chkPlotSUM;
     QCheckBox *chkPlotDelta;
     QCheckBox *chkPlotSUM_Anlz;
     QCheckBox *chkPlotDeltaSLC_Anlz;
+    QGroupBox *gbxAnlzType;
+    QRadioButton *rdbAnlzAve;
+    QRadioButton *rdbAveFIR;
     QWidget *tab_Plot;
     QWidget *horizontalLayoutWidget_2;
     QHBoxLayout *horizontalLayout;
     QCustomPlot *plot_Dopp;
     QLabel *lblfinalDegree;
     QPushButton *btnClearDiagrams;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QSpacerItem *horizontalSpacer_17;
@@ -144,8 +147,8 @@ public:
     HLed *ledSelectDeltafb;
     QWidget *layoutWidget_1;
     QVBoxLayout *verticalLayout;
-    QRadioButton *rbSelectDelta;
-    QRadioButton *rbSelectSLC;
+    QRadioButton *rdbSelectDelta;
+    QRadioButton *rdbSelectSLC;
     HLed *ledSelectSLCfb;
     QLabel *lblAxb;
     QLineEdit *leOffsetAnalyzerSum;
@@ -162,7 +165,7 @@ public:
     HLed *ledDetect1;
     HLed *ledSUM_SerialPin;
     HLed *ledDeltaSLC_SerialPin;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_3;
     QLabel *lblAxb_5;
     QSpacerItem *horizontalSpacer_19;
@@ -292,6 +295,10 @@ public:
     QSpacerItem *verticalSpacer_3;
     QVBoxLayout *verticalLayout_21;
     QTableWidget *gridperdicSats;
+    QWidget *tab_Settings;
+    QLineEdit *lePassWord_Settings;
+    QLabel *lbl_PC_Password_2;
+    QPushButton *pushButton_2;
     QWidget *layoutWidget_5;
     QVBoxLayout *verticalLayout_2;
     QWidget *layoutWidget_6;
@@ -536,25 +543,25 @@ public:
         gb_SerialPlotRadios = new QGroupBox(tab_COM);
         gb_SerialPlotRadios->setObjectName(QString::fromUtf8("gb_SerialPlotRadios"));
         gb_SerialPlotRadios->setGeometry(QRect(420, 420, 111, 91));
-        rb_RealTime = new QRadioButton(gb_SerialPlotRadios);
-        rb_RealTime->setObjectName(QString::fromUtf8("rb_RealTime"));
-        rb_RealTime->setGeometry(QRect(10, 30, 131, 22));
-        rb_RealTime->setChecked(false);
-        rb_adc_EncoderPlot = new QRadioButton(gb_SerialPlotRadios);
-        rb_adc_EncoderPlot->setObjectName(QString::fromUtf8("rb_adc_EncoderPlot"));
-        rb_adc_EncoderPlot->setGeometry(QRect(10, 60, 121, 22));
-        rb_adc_EncoderPlot->setChecked(true);
+        rdbRealTime = new QRadioButton(gb_SerialPlotRadios);
+        rdbRealTime->setObjectName(QString::fromUtf8("rdbRealTime"));
+        rdbRealTime->setGeometry(QRect(10, 30, 131, 22));
+        rdbRealTime->setChecked(false);
+        rdbEncoderPlot = new QRadioButton(gb_SerialPlotRadios);
+        rdbEncoderPlot->setObjectName(QString::fromUtf8("rdbEncoderPlot"));
+        rdbEncoderPlot->setGeometry(QRect(10, 60, 121, 22));
+        rdbEncoderPlot->setChecked(true);
         gb_SerialPlotRadios_plarLinear = new QGroupBox(tab_COM);
         gb_SerialPlotRadios_plarLinear->setObjectName(QString::fromUtf8("gb_SerialPlotRadios_plarLinear"));
         gb_SerialPlotRadios_plarLinear->setGeometry(QRect(420, 530, 91, 91));
-        rb_PolarPlot = new QRadioButton(gb_SerialPlotRadios_plarLinear);
-        rb_PolarPlot->setObjectName(QString::fromUtf8("rb_PolarPlot"));
-        rb_PolarPlot->setGeometry(QRect(10, 60, 131, 22));
-        rb_PolarPlot->setChecked(false);
-        rb_LinearPlot = new QRadioButton(gb_SerialPlotRadios_plarLinear);
-        rb_LinearPlot->setObjectName(QString::fromUtf8("rb_LinearPlot"));
-        rb_LinearPlot->setGeometry(QRect(10, 20, 121, 22));
-        rb_LinearPlot->setChecked(true);
+        rdbPolarPlot = new QRadioButton(gb_SerialPlotRadios_plarLinear);
+        rdbPolarPlot->setObjectName(QString::fromUtf8("rdbPolarPlot"));
+        rdbPolarPlot->setGeometry(QRect(10, 60, 131, 22));
+        rdbPolarPlot->setChecked(false);
+        rdbLinearPlot = new QRadioButton(gb_SerialPlotRadios_plarLinear);
+        rdbLinearPlot->setObjectName(QString::fromUtf8("rdbLinearPlot"));
+        rdbLinearPlot->setGeometry(QRect(10, 20, 121, 22));
+        rdbLinearPlot->setChecked(true);
         groupBox_2 = new QGroupBox(tab_COM);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         groupBox_2->setGeometry(QRect(409, 240, 121, 161));
@@ -570,6 +577,16 @@ public:
         chkPlotDeltaSLC_Anlz = new QCheckBox(groupBox_2);
         chkPlotDeltaSLC_Anlz->setObjectName(QString::fromUtf8("chkPlotDeltaSLC_Anlz"));
         chkPlotDeltaSLC_Anlz->setGeometry(QRect(0, 120, 121, 22));
+        gbxAnlzType = new QGroupBox(tab_COM);
+        gbxAnlzType->setObjectName(QString::fromUtf8("gbxAnlzType"));
+        gbxAnlzType->setGeometry(QRect(370, 90, 120, 111));
+        rdbAnlzAve = new QRadioButton(gbxAnlzType);
+        rdbAnlzAve->setObjectName(QString::fromUtf8("rdbAnlzAve"));
+        rdbAnlzAve->setGeometry(QRect(0, 30, 116, 22));
+        rdbAnlzAve->setChecked(true);
+        rdbAveFIR = new QRadioButton(gbxAnlzType);
+        rdbAveFIR->setObjectName(QString::fromUtf8("rdbAveFIR"));
+        rdbAveFIR->setGeometry(QRect(0, 60, 116, 22));
         Tab->addTab(tab_COM, QString());
         btnForceExit->raise();
         lbl_AnimationSerial->raise();
@@ -584,6 +601,7 @@ public:
         gb_SerialPlotRadios->raise();
         gb_SerialPlotRadios_plarLinear->raise();
         groupBox_2->raise();
+        gbxAnlzType->raise();
         tab_Plot = new QWidget();
         tab_Plot->setObjectName(QString::fromUtf8("tab_Plot"));
         horizontalLayoutWidget_2 = new QWidget(tab_Plot);
@@ -607,15 +625,15 @@ public:
         btnClearDiagrams = new QPushButton(tab_Plot);
         btnClearDiagrams->setObjectName(QString::fromUtf8("btnClearDiagrams"));
         btnClearDiagrams->setGeometry(QRect(40, 170, 121, 27));
-        layoutWidget = new QWidget(tab_Plot);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(175, 50, 206, 22));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
+        layoutWidget1 = new QWidget(tab_Plot);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(175, 50, 206, 22));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(layoutWidget);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         horizontalLayout_2->addWidget(label_2);
@@ -624,7 +642,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_17);
 
-        lbl_MoveStatus = new QLabel(layoutWidget);
+        lbl_MoveStatus = new QLabel(layoutWidget1);
         lbl_MoveStatus->setObjectName(QString::fromUtf8("lbl_MoveStatus"));
 
         horizontalLayout_2->addWidget(lbl_MoveStatus);
@@ -723,22 +741,22 @@ public:
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        rbSelectDelta = new QRadioButton(layoutWidget_1);
-        rbSelectDelta->setObjectName(QString::fromUtf8("rbSelectDelta"));
+        rdbSelectDelta = new QRadioButton(layoutWidget_1);
+        rdbSelectDelta->setObjectName(QString::fromUtf8("rdbSelectDelta"));
         QFont font2;
         font2.setPointSize(12);
         font2.setBold(true);
         font2.setWeight(75);
-        rbSelectDelta->setFont(font2);
-        rbSelectDelta->setChecked(true);
+        rdbSelectDelta->setFont(font2);
+        rdbSelectDelta->setChecked(true);
 
-        verticalLayout->addWidget(rbSelectDelta);
+        verticalLayout->addWidget(rdbSelectDelta);
 
-        rbSelectSLC = new QRadioButton(layoutWidget_1);
-        rbSelectSLC->setObjectName(QString::fromUtf8("rbSelectSLC"));
-        rbSelectSLC->setFont(font2);
+        rdbSelectSLC = new QRadioButton(layoutWidget_1);
+        rdbSelectSLC->setObjectName(QString::fromUtf8("rdbSelectSLC"));
+        rdbSelectSLC->setFont(font2);
 
-        verticalLayout->addWidget(rbSelectSLC);
+        verticalLayout->addWidget(rdbSelectSLC);
 
         layoutWidget_1->raise();
         ledSelectDeltafb->raise();
@@ -806,15 +824,15 @@ public:
         ledDeltaSLC_SerialPin->setSizePolicy(sizePolicy1);
         ledDeltaSLC_SerialPin->setMinimumSize(QSize(15, 15));
         ledDeltaSLC_SerialPin->setMaximumSize(QSize(20, 20));
-        widget = new QWidget(tab_Watch_Config);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(80, 420, 361, 29));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(tab_Watch_Config);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(80, 420, 361, 29));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        lblAxb_5 = new QLabel(widget);
+        lblAxb_5 = new QLabel(layoutWidget);
         lblAxb_5->setObjectName(QString::fromUtf8("lblAxb_5"));
 
         horizontalLayout_3->addWidget(lblAxb_5);
@@ -823,7 +841,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_19);
 
-        leFreqRotMCU = new QLineEdit(widget);
+        leFreqRotMCU = new QLineEdit(layoutWidget);
         leFreqRotMCU->setObjectName(QString::fromUtf8("leFreqRotMCU"));
 
         horizontalLayout_3->addWidget(leFreqRotMCU);
@@ -832,7 +850,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_20);
 
-        btnsetFrequencyRotMCU = new QPushButton(widget);
+        btnsetFrequencyRotMCU = new QPushButton(layoutWidget);
         btnsetFrequencyRotMCU->setObjectName(QString::fromUtf8("btnsetFrequencyRotMCU"));
 
         horizontalLayout_3->addWidget(btnsetFrequencyRotMCU);
@@ -1491,6 +1509,18 @@ public:
         horizontalLayout_13->addWidget(scrollArea_3);
 
         Tab->addTab(tab_TLE, QString());
+        tab_Settings = new QWidget();
+        tab_Settings->setObjectName(QString::fromUtf8("tab_Settings"));
+        lePassWord_Settings = new QLineEdit(tab_Settings);
+        lePassWord_Settings->setObjectName(QString::fromUtf8("lePassWord_Settings"));
+        lePassWord_Settings->setGeometry(QRect(112, 20, 97, 27));
+        lbl_PC_Password_2 = new QLabel(tab_Settings);
+        lbl_PC_Password_2->setObjectName(QString::fromUtf8("lbl_PC_Password_2"));
+        lbl_PC_Password_2->setGeometry(QRect(20, 20, 86, 27));
+        pushButton_2 = new QPushButton(tab_Settings);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(220, 20, 98, 27));
+        Tab->addTab(tab_Settings, QString());
         layoutWidget_5 = new QWidget(centralWidget);
         layoutWidget_5->setObjectName(QString::fromUtf8("layoutWidget_5"));
         layoutWidget_5->setGeometry(QRect(0, 0, 2, 2));
@@ -1524,7 +1554,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        Tab->setCurrentIndex(2);
+        Tab->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
 
 
@@ -1566,16 +1596,19 @@ public:
         lbl_MovingFlage->setText(QApplication::translate("MainWindow", "--", 0, QApplication::UnicodeUTF8));
         lbl_finalDegreefinal->setText(QApplication::translate("MainWindow", "--", 0, QApplication::UnicodeUTF8));
         gb_SerialPlotRadios->setTitle(QApplication::translate("MainWindow", "X Axis Plot", 0, QApplication::UnicodeUTF8));
-        rb_RealTime->setText(QApplication::translate("MainWindow", "Real Time", 0, QApplication::UnicodeUTF8));
-        rb_adc_EncoderPlot->setText(QApplication::translate("MainWindow", "Encoder", 0, QApplication::UnicodeUTF8));
+        rdbRealTime->setText(QApplication::translate("MainWindow", "Real Time", 0, QApplication::UnicodeUTF8));
+        rdbEncoderPlot->setText(QApplication::translate("MainWindow", "Encoder", 0, QApplication::UnicodeUTF8));
         gb_SerialPlotRadios_plarLinear->setTitle(QApplication::translate("MainWindow", "Plot Sketch", 0, QApplication::UnicodeUTF8));
-        rb_PolarPlot->setText(QApplication::translate("MainWindow", "Polar", 0, QApplication::UnicodeUTF8));
-        rb_LinearPlot->setText(QApplication::translate("MainWindow", "Linear", 0, QApplication::UnicodeUTF8));
+        rdbPolarPlot->setText(QApplication::translate("MainWindow", "Polar", 0, QApplication::UnicodeUTF8));
+        rdbLinearPlot->setText(QApplication::translate("MainWindow", "Linear", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Y Axis Plot", 0, QApplication::UnicodeUTF8));
         chkPlotSUM->setText(QApplication::translate("MainWindow", "SUM", 0, QApplication::UnicodeUTF8));
         chkPlotDelta->setText(QApplication::translate("MainWindow", "Delta", 0, QApplication::UnicodeUTF8));
         chkPlotSUM_Anlz->setText(QApplication::translate("MainWindow", "SUM_Anlz", 0, QApplication::UnicodeUTF8));
         chkPlotDeltaSLC_Anlz->setText(QApplication::translate("MainWindow", "Del_SLC_Anlz", 0, QApplication::UnicodeUTF8));
+        gbxAnlzType->setTitle(QApplication::translate("MainWindow", "Analyzor Tpe", 0, QApplication::UnicodeUTF8));
+        rdbAnlzAve->setText(QApplication::translate("MainWindow", "Average Anlz", 0, QApplication::UnicodeUTF8));
+        rdbAveFIR->setText(QApplication::translate("MainWindow", "FIR Anlz", 0, QApplication::UnicodeUTF8));
         Tab->setTabText(Tab->indexOf(tab_COM), QApplication::translate("MainWindow", "Main", 0, QApplication::UnicodeUTF8));
         lblfinalDegree->setText(QApplication::translate("MainWindow", "--", 0, QApplication::UnicodeUTF8));
         btnClearDiagrams->setText(QApplication::translate("MainWindow", "Clear Diagrams", 0, QApplication::UnicodeUTF8));
@@ -1606,8 +1639,8 @@ public:
 #ifndef QT_NO_TOOLTIP
         ledSelectDeltafb->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        rbSelectDelta->setText(QApplication::translate("MainWindow", "Delta", 0, QApplication::UnicodeUTF8));
-        rbSelectSLC->setText(QApplication::translate("MainWindow", "SLC", 0, QApplication::UnicodeUTF8));
+        rdbSelectDelta->setText(QApplication::translate("MainWindow", "Delta", 0, QApplication::UnicodeUTF8));
+        rdbSelectSLC->setText(QApplication::translate("MainWindow", "SLC", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         ledSelectSLCfb->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
@@ -1725,6 +1758,9 @@ public:
         ___qtablewidgetitem17->setText(QApplication::translate("MainWindow", "Type", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("MainWindow", "Peridict Sats", 0, QApplication::UnicodeUTF8));
         Tab->setTabText(Tab->indexOf(tab_TLE), QApplication::translate("MainWindow", "TLE", 0, QApplication::UnicodeUTF8));
+        lbl_PC_Password_2->setText(QApplication::translate("MainWindow", "PC Password", 0, QApplication::UnicodeUTF8));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Unlock", 0, QApplication::UnicodeUTF8));
+        Tab->setTabText(Tab->indexOf(tab_Settings), QApplication::translate("MainWindow", "Settings", 0, QApplication::UnicodeUTF8));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

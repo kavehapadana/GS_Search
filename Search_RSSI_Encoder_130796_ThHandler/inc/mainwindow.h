@@ -17,6 +17,8 @@
 #include <Rotator/tleconversion.h>
 #include <Rotator/transformmatrix.h>
 #include <Rotator/matrix_algebra.h>
+#include <analyzor.h>
+
 #define pi 3.14159265358979323846
 
 namespace Ui {
@@ -52,8 +54,7 @@ public:
     QThread* serialRcvThread;
     Worker*  worker;
     Worker_Serial* worker_serial;
-
-
+    Analyzor* _Analyzor;
 
 private slots:
     void on_btnSerialOpenClose_clicked();
@@ -105,12 +106,6 @@ private slots:
     void parseMessage(QByteArray msg, QDateTime dt);
 
     void setMainGraphData(int _grph, QVector<double> X,QVector<double> Y);
-
-    double RSSI_SUM_Analyzor(double _rssi_sum);
-
-    double RSSI_Delta_Analyzor(double _rssi_delta);
-
-    double RSSI_SLC_Analyzor(double _rssi_slc);
 
     void on_btnResetMaxTable_clicked();
 
@@ -216,7 +211,6 @@ private:
     QDateTime rotatorSatupDateTime;
     QDateTime rotatorSatDownDateTime;
     int countoftle;
-
 
 public slots:
     void handleResults(const QString &);
